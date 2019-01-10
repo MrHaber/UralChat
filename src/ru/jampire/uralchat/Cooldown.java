@@ -11,7 +11,7 @@ public class Cooldown {
     private String player;
     private long cooldown;
     private String key;
-    public static HashMap<String, Cooldown> cooldowns = new HashMap();
+    public static HashMap<String, Cooldown> cooldowns = new HashMap<>();
 
     public Cooldown(String player, long cooldown, String key) {
         this.player = player;
@@ -39,11 +39,11 @@ public class Cooldown {
         if (cooldowns.get(player + title) == null) {
             return false;
         } else {
-            return ((Cooldown)cooldowns.get(player + title)).getCooldown() > System.currentTimeMillis();
+            return cooldowns.get(player + title).getCooldown() > System.currentTimeMillis();
         }
     }
 
     public static long getCooldown(String player, String title) {
-        return (((Cooldown)cooldowns.get(player + title)).getCooldown() - System.currentTimeMillis()) / 1000L;
+        return (cooldowns.get(player + title).getCooldown() - System.currentTimeMillis()) / 1000L;
     }
 }
