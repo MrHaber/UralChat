@@ -102,7 +102,7 @@ public class ChatListener implements Listener {
         }
     }
 
-    @EventHandler
+    /*@EventHandler
     public void onPlayerChat(PlayerChatEvent event) {
         Player player = event.getPlayer();
         if (Cooldown.hasCooldown(player.getName(), "chat")) {
@@ -147,5 +147,5 @@ public class ChatListener implements Listener {
             }
 
         }
-    }
+    }*/
 }
