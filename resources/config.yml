@@ -1,0 +1,8 @@
+commands:
+  - /rtp
+delays:
+   '/rtp':
+    delay: 20 # в секундах
+ 
+DELAY_MESSAGE: '&4Команда будет доступна через <delay> секунд.'
+DELAY_MESSAGE_CHAT: '&4Команда будет доступна через <delay> секунд.'

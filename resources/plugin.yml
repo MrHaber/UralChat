@@ -1,0 +1,11 @@
+name: UralChat
+main: ru.jampire.uralchat.Main
+version: 3.5
+commands:
+    uralchat:
+        permission: UralChat.admin
+permissions:
+    UralChat.ignore:
+        default: op
+    UralChat.admin:
+        default: op
