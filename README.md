@@ -12,8 +12,7 @@
 # - UralChat.admin - право перезагрузки конфига - /uralchat
 
 delays:
-  '/rtp': 10
-  '/cchat': 30
+  '/rtp': 20 # в секундах
  
-DELAY_MESSAGE: '&cКоманда будет доступна через <delay> секунд.'
+DELAY_MESSAGE: '&4Команда будет доступна через <delay> секунд.'
 ```
