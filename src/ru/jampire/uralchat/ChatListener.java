@@ -23,15 +23,15 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class ChatListener implements Listener {
-    public Main plugin;
+    private Main plugin;
 
     public ChatListener(Main instance) {
         this.plugin = instance;
     }
 
-    private static final Pattern PATTERN_ON_SPACE = Pattern.compile(" ", Pattern.LITERAL);
+    public static final Pattern PATTERN_ON_SPACE = Pattern.compile(" ", Pattern.LITERAL);
 
-    @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
+    @EventHandler(ignoreCancelled = true)
     public void on(PlayerCommandPreprocessEvent event) {
         Player player = event.getPlayer();
         if (player.hasPermission("UralChat.ignore")) {
@@ -48,10 +48,10 @@ public class ChatListener implements Listener {
             return;
         }
 
-        String commandName = delay.getKey();
+        String cmd = delay.getKey(); // Получаем ключи из Pair
 
         if (Cooldown.hasCooldown(player.getName(), commandName)) {
-            player.sendMessage(this.plugin.getConfig().getString("DELAY_MESSAGE").replaceAll("&", "§").replaceAll("<delay>", "" + Cooldown.getCooldown(player.getName(), commandName)));
+            player.sendMessage(this.plugin.getConfig().getString("DELAY_MESSAGE").replace("&", "§").replace("<delay>", "" + Cooldown.getCooldown(player.getName(), commandName)));
             event.setCancelled(true);
             return;
         }
@@ -74,7 +74,7 @@ public class ChatListener implements Listener {
 
         List<String> aliasesLower = command == null ? Collections.emptyList() : command.getAliases().stream()
                 .map(String::toLowerCase)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()); // Сортируем и отбираем команды по LowerCase
 
         for (String key : config.getConfigurationSection("delays").getKeys(false)) {
             String cfgCommand = StringUtils.removeStart(key, "/")
